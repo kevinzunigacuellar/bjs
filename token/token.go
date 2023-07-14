@@ -8,8 +8,13 @@ type Token struct {
 }
 
 var keyword = map[string]TokenType{
-	"fn":  FUNCTION,
-	"let": LET,
+	"fn":     FUNCTION,
+	"let":    LET,
+	"true":   TRUE,
+	"false":  FALSE,
+	"if":     IF,
+	"else":   ELSE,
+	"return": RETURN,
 }
 
 func LookupIdent(ident string) TokenType {
@@ -20,29 +25,31 @@ func LookupIdent(ident string) TokenType {
 }
 
 const (
-	ILLEGAL = "ILLEGAL"
-	EOF     = "EOF"
-	// Identifiers + literals
-	IDENT = "IDENT" // add, foobar, x, y, ...
-	INT   = "INT"   // 1343456
-	// Operators
-	ASSIGN   = "="
-	PLUS     = "+"
-	MINUS    = "-"
-	BANG     = "!"
-	ASTERISK = "*"
-	SLASH    = "/"
-	// Comparison
-	LT = "<"
-	GT = ">"
-	// Delimiters
-	COMMA     = ","
-	SEMICOLON = ";"
-	LPAREN    = "("
-	RPAREN    = ")"
-	LBRACE    = "{"
-	RBRACE    = "}"
-	// Keywords
-	FUNCTION = "FUNCTION"
-	LET      = "LET"
+	ILLEGAL   TokenType = "ILLEGAL"
+	EOF       TokenType = "EOF"
+	IDENT     TokenType = "IDENT"
+	INT       TokenType = "INT"
+	ASSIGN    TokenType = "="
+	PLUS      TokenType = "+"
+	MINUS     TokenType = "-"
+	BANG      TokenType = "!"
+	ASTERISK  TokenType = "*"
+	SLASH     TokenType = "/"
+	LT        TokenType = "<"
+	GT        TokenType = ">"
+	EQ        TokenType = "=="
+	NOT_EQ    TokenType = "!="
+	COMMA     TokenType = ","
+	SEMICOLON TokenType = ";"
+	LPAREN    TokenType = "("
+	RPAREN    TokenType = ")"
+	LBRACE    TokenType = "{"
+	RBRACE    TokenType = "}"
+	FUNCTION  TokenType = "FUNCTION"
+	LET       TokenType = "LET"
+	TRUE      TokenType = "TRUE"
+	FALSE     TokenType = "FALSE"
+	IF        TokenType = "IF"
+	ELSE      TokenType = "ELSE"
+	RETURN    TokenType = "RETURN"
 )
