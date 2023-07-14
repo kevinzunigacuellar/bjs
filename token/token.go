@@ -39,6 +39,8 @@ const (
 	GT        TokenType = ">"
 	EQ        TokenType = "=="
 	NOT_EQ    TokenType = "!="
+	LTE       TokenType = "<="
+	GTE       TokenType = ">="
 	COMMA     TokenType = ","
 	SEMICOLON TokenType = ";"
 	LPAREN    TokenType = "("
