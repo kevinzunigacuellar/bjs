@@ -8,20 +8,13 @@ type Token struct {
 }
 
 var keyword = map[string]TokenType{
-	"fn":     FUNCTION,
-	"let":    LET,
+	"fun":    FUNCTION,
+	"var":    VARIABLE,
 	"true":   TRUE,
 	"false":  FALSE,
 	"if":     IF,
 	"else":   ELSE,
 	"return": RETURN,
-}
-
-func LookupIdent(ident string) TokenType {
-	if tok, ok := keyword[ident]; ok {
-		return tok
-	}
-	return IDENT
 }
 
 const (
@@ -48,10 +41,17 @@ const (
 	LBRACE    TokenType = "{"
 	RBRACE    TokenType = "}"
 	FUNCTION  TokenType = "FUNCTION"
-	LET       TokenType = "LET"
+	VARIABLE  TokenType = "VARIABLE"
 	TRUE      TokenType = "TRUE"
 	FALSE     TokenType = "FALSE"
 	IF        TokenType = "IF"
 	ELSE      TokenType = "ELSE"
 	RETURN    TokenType = "RETURN"
 )
+
+func LookupIdent(ident string) TokenType {
+	if tok, ok := keyword[ident]; ok {
+		return tok
+	}
+	return IDENT
+}

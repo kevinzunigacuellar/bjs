@@ -1,3 +1,3 @@
-module interpreter
+module github.com/kevinzunigacuellar/bjs
 
-go 1.20
+go 1.22

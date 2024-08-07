@@ -1,19 +1,17 @@
 package lexer
 
-import (
-	"interpreter/token"
-)
+import "github.com/kevinzunigacuellar/bjs/token"
 
 type Lexer struct {
 	input        string
-	position     int
-	readPosition int
-	ch           byte
+	position     int  // current position in input (points to current char)
+	readPosition int  // current reading position in input (after current char)
+	ch           byte // current char under examination (ASCII only)
 }
 
 func New(input string) *Lexer {
 	l := &Lexer{input: input}
-	l.readChar()
+	l.readChar() // initialize lexer to be set to the first character
 	return l
 }
 
@@ -114,19 +112,19 @@ func (l *Lexer) NextToken() token.Token {
 }
 
 func (l *Lexer) readIdentifier() string {
-	postion := l.position
+	startPosition := l.position
 	for isLetter(l.ch) {
 		l.readChar()
 	}
-	return l.input[postion:l.position]
+	return l.input[startPosition:l.position]
 }
 
 func (l *Lexer) readNumber() string {
-	postion := l.position
+	startPosition := l.position
 	for isDigit(l.ch) {
 		l.readChar()
 	}
-	return l.input[postion:l.position]
+	return l.input[startPosition:l.position]
 }
 
 func (l *Lexer) skipWhitespace() {
