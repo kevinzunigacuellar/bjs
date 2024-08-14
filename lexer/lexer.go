@@ -11,13 +11,13 @@ type Lexer struct {
 
 func New(input string) *Lexer {
 	l := &Lexer{input: input}
-	l.readChar() // initialize lexer to be set to the first character
+	l.readChar() // initialize lexer with first character
 	return l
 }
 
 func (l *Lexer) readChar() {
 	if l.readPosition >= len(l.input) {
-		l.ch = 0
+		l.ch = 0 // EOF
 	} else {
 		l.ch = l.input[l.readPosition]
 	}
